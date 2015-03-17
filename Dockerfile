@@ -9,6 +9,9 @@ ENV NAGIOSADMIN_PASS nagios
 ENV APACHE_RUN_USER nagios
 ENV APACHE_RUN_GROUP nagios
 ENV NAGIOS_TIMEZONE UTC
+ENV CYCLE_NOTIFICATIONS 0
+ENV CYCLE_OFF_PAUSE 10
+ENV CYCLE_ON_PAUSE 300
 
 RUN sed -i 's/universe/universe multiverse/' /etc/apt/sources.list
 RUN apt-get update && apt-get install -y iputils-ping netcat build-essential snmp snmpd snmp-mibs-downloader php5-cli apache2 libapache2-mod-php5 runit bc postfix bsd-mailx
@@ -41,6 +44,7 @@ ADD nagios.init /etc/sv/nagios/run
 ADD apache.init /etc/sv/apache/run
 ADD postfix.init /etc/sv/postfix/run
 ADD postfix.stop /etc/sv/postfix/finish
+ADD cycle_notifications.sh /usr/local/bin/cycle_notifications.sh
 
 ADD start.sh /usr/local/bin/start_nagios
 

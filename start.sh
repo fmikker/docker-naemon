@@ -6,5 +6,6 @@ if [ ! -f ${NAGIOS_HOME}/etc/htpasswd.users ] ; then
 fi
 
 exec runsvdir /etc/sv
+exec /usr/local/bin/cycle_notifications.sh &
 
 /etc/init.d/apache2 start
