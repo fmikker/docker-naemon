@@ -9,6 +9,9 @@ mail will not work.
 ### Knobs ###
 - NAGIOSADMIN_USER=nagiosadmin
 - NAGIOSAMDIN_PASS=nagios
+- CYCLE_NOTIFICATIONS=0 (defaults to off, non-zero turns on cycle of notifications at startup)
+- CYCLE_OFF_PAUSE 10 (pause before turning off notifications at startup)
+- CYCLE_ON_PAUSE 300 (pause before turning notifications back on)
 
 ### Web UI ###
 The Nagios Web UI is available on port 80 of the container<br />
