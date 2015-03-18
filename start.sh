@@ -5,7 +5,7 @@ if [ ! -f ${NAGIOS_HOME}/etc/htpasswd.users ] ; then
   chown -R nagios.nagios ${NAGIOS_HOME}/etc/htpasswd.users
 fi
 
+exec /usr/local/bin/cycle_notifications.sh 2>&1 > /var/log/notifications.log &
 exec runsvdir /etc/sv
-exec /usr/local/bin/cycle_notifications.sh &
 
 /etc/init.d/apache2 start

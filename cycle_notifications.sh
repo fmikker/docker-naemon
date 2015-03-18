@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "cycle_notifications $CYCLE_NOTIFICATIONS"
+echo "cycle_off_pause $CYCLE_OFF_PAUSE"
+echo "cycle_on_pause $CYCLE_ON_PAUSE"
 if (( $CYCLE_NOTIFICATIONS == 0 )); then
     exit 0
 fi
