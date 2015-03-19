@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec ${NAEMON_HOME}/bin/naemon ${NAEMON_HOME}/etc/NAEMON.cfg

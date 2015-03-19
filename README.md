@@ -1,17 +1,15 @@
-## Docker-Nagios  [![Docker Build Status](http://72.14.176.28/cpuguy83/nagios)](https://registry.hub.docker.com/u/cpuguy83/nagios)
+## Docker-Naemon  
+Originated from ![Docker Build Status](http://72.14.176.28/cpuguy83/naemon)](https://registry.hub.docker.com/u/cpuguy83/naemon)
 
-Basic Docker image for running Nagios.<br />
-This is running Nagios 3.5.1
+Basic Docker image for running Naemon 1.0<br />
 
-You should either link a mail container in as "mail" or set MAIL_SERVER, otherwise
-mail will not work.
 
 ### Knobs ###
-- NAGIOSADMIN_USER=nagiosadmin
-- NAGIOSAMDIN_PASS=nagios
+- NAGIOSADMIN_USER=naemonadmin
+- NAGIOSAMDIN_PASS=naemon
 - CYCLE_NOTIFICATIONS=0 (defaults to off, non-zero turns on cycle of notifications at startup)
 - CYCLE_OFF_PAUSE 10 (pause before turning off notifications at startup)
 - CYCLE_ON_PAUSE 300 (pause before turning notifications back on)
 
 ### Web UI ###
-The Nagios Web UI is available on port 80 of the container<br />
+The Naemon Web UI is available on port 80 and 443 of the container<br />

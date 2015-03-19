@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ ! -f ${NAGIOS_HOME}/etc/htpasswd.users ] ; then
-  htpasswd -c -b -s ${NAGIOS_HOME}/etc/htpasswd.users ${NAGIOSADMIN_USER} ${NAGIOSADMIN_PASS}
-  chown -R nagios.nagios ${NAGIOS_HOME}/etc/htpasswd.users
+if [ ! -f ${NAEMON_HOME}/etc/htpasswd.users ] ; then
+  htpasswd -c -b -s ${NAEMON_HOME}/etc/htpasswd.users ${NAEMONADMIN_USER} ${NAEMONADMIN_PASS}
+  chown -R naemon.naemon ${NAEMON_HOME}/etc/htpasswd.users
 fi
 
 exec /usr/local/bin/cycle_notifications.sh 2>&1 > /var/log/notifications.log &
