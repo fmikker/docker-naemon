@@ -1,8 +1,11 @@
 ## Docker-Naemon  
 Originated from [Docker Build Status](http://72.14.176.28/cpuguy83/naemon)(https://registry.hub.docker.com/u/cpuguy83/naemon)
 
-Basic Docker image for running Naemon 1.0<br />
+Basic Docker image for running Naemon 1.0 under CentOS 7<br />
 
+Installs the repos EPEL(7) and ConSol*
+ - http://labs.consol.de/repo/stable/#_7
+ - http://fedoraproject.org/wiki/EPEL/FAQ#Using_EPEL
 
 ### Knobs ###
 - NAEMONADMIN_USER=naemonadmin
