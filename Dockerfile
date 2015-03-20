@@ -13,7 +13,11 @@ ENV CYCLE_NOTIFICATIONS 0
 ENV CYCLE_OFF_PAUSE 10
 ENV CYCLE_ON_PAUSE 300
 
-RUN rpm -Uvh "https://labs.consol.de/repo/stable/rhel7/i386/labs-consol-stable.rhel7.noarch.rpm"
+# Install EPEL repo
+RUN rpm -Uvh http://download.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+
+# Install ConSol* repo to install Naemon
+RUN rpm -Uvh https://labs.consol.de/repo/stable/rhel7/i386/labs-consol-stable.rhel7.noarch.rpm
 
 RUN yum update
 RUN yum install -y naemon
