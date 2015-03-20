@@ -18,8 +18,6 @@ RUN rpm -Uvh "https://labs.consol.de/repo/stable/rhel7/i386/labs-consol-stable.r
 RUN yum update
 RUN yum install -y naemon
 
-# TODO investigate possibility to use PolKit
-
 RUN ( egrep -i  "^${NAEMON_GROUP}" /etc/group || groupadd $NAEMON_GROUP ) && ( egrep -i "^${NAEMON_CMDGROUP}" /etc/group || groupadd $NAEMON_CMDGROUP )
 RUN ( id -u $NAEMON_USER || useradd --system $NAEMON_USER -g $NAEMON_GROUP -d $NAEMON_HOME ) && ( id -u $NAEMON_CMDUSER || useradd --system -d $NAEMON_HOME -g $NAEMON_CMDGROUP $NAEMON_CMDUSER )
 
