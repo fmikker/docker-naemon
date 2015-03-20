@@ -1,5 +1,5 @@
 ## Docker-Naemon  
-Originated from ![Docker Build Status](http://72.14.176.28/cpuguy83/naemon)](https://registry.hub.docker.com/u/cpuguy83/naemon)
+Originated from [Docker Build Status](http://72.14.176.28/cpuguy83/naemon)](https://registry.hub.docker.com/u/cpuguy83/naemon)
 
 Basic Docker image for running Naemon 1.0<br />
 
