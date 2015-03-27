@@ -14,19 +14,38 @@ ENV CYCLE_OFF_PAUSE 10
 ENV CYCLE_ON_PAUSE 300
 
 # Install EPEL repo
-RUN rpm -Uvh http://download.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+RUN echo "Installing EPEL repo for dependencies"
+RUN yum -y install "http://download.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm"
 
 # Install ConSol* repo to install Naemon
-RUN rpm -Uvh https://labs.consol.de/repo/stable/rhel7/i386/labs-consol-stable.rhel7.noarch.rpm
+RUN echo "Installing ConSol* repo.."
+RUN yum -y install "https://labs.consol.de/repo/stable/rhel7/i386/labs-consol-stable.rhel7.noarch.rpm"
 
 RUN yum update
 RUN yum install -y naemon
 
+RUN echo "Thruk will not work when SELinux is enabled"
+RUN echo "Disabling SElinux"
+RUN setenforce 0
+RUN sed -i 's/SELINUX=enforcing/SELINUX=targeted/g' /etc/selinux/config
+
+RUN echo "******************************************
+Naemon/Thruk have been configured for http://localhost/naemon/.
+The default user is 'admin' with password 'admin'. You can usually change that by 'htpasswd /etc/naemon/htpasswd admin'. And you really should change that!"
+
+RUN echo "thruk plugins enabled: business_process conf minemap mobile panorama reports2 statusmap"
+
+
+
+
+
+
+
+
+
 #RUN ( egrep -i  "^${NAEMON_GROUP}" /etc/group || groupadd $NAEMON_GROUP ) && ( egrep -i "^${NAEMON_CMDGROUP}" /etc/group || groupadd $NAEMON_CMDGROUP )
 #RUN ( id -u $NAEMON_USER || useradd --system $NAEMON_USER -g $NAEMON_GROUP -d $NAEMON_HOME ) && ( id -u $NAEMON_CMDUSER || useradd --system -d $NAEMON_HOME -g $NAEMON_CMDGROUP $NAEMON_CMDUSER )
 
-#ADD http://downloads.sourceforge.net/project/naemon/naemon-3.x/naemon-3.5.1/naemon-3.5.1.tar.gz?r=http%3A%2F%2Fwww.naemon.org%2Fdownload%2Fcore%2Fthanks%2F%3Ft%3D1398863696&ts=1398863718&use_mirror=superb-dca3 /tmp/naemon.tar.gz
-#RUN cd /tmp && tar -zxvf naemon.tar.gz && cd naemon  && ./configure --prefix=${NAEMON_HOME} --exec-prefix=${NAEMON_HOME} --enable-event-broker --with-naemon-command-user=${NAEMON_CMDUSER} --with-command-group=${NAEMON_CMDGROUP} --with-naemon-user=${NAEMON_USER} --with-naemon-group=${NAEMON_GROUP} && make all && make install && make install-config && make install-commandmode && cp sample-config/httpd.conf /etc/apache2/conf.d/naemon.conf
 #ADD http://www.naemon-plugins.org/download/naemon-plugins-1.5.tar.gz /tmp/
 #RUN cd /tmp && tar -zxvf naemon-plugins-1.5.tar.gz && cd naemon-plugins-1.5 && ./configure --prefix=${NAEMON_HOME} && make && make install
 
